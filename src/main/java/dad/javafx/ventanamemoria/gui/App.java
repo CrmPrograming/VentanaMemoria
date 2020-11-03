@@ -57,7 +57,26 @@ public class App extends Application {
 	
 	@Override
 	public void stop() throws Exception {
+		String rutaPerfil = System.getProperty("user.home");
+		Properties prop = new Properties();
+		File fConfig = new File(rutaPerfil + "\\.VentanaConMemoria\\ventana.config");
+		Model model = controller.getModel();
 		
+		if (!fConfig.getParentFile().exists() && !fConfig.getParentFile().mkdirs())
+			throw new IllegalStateException("No se pudo crear la carpeta .VentanaConMemoria");
+		
+		// Creamos el fichero en caso de no existir
+		fConfig.createNewFile();
+		
+		prop.setProperty("background.red", String.valueOf(model.getRed()));
+		prop.setProperty("background.green", String.valueOf(model.getGreen()));
+		prop.setProperty("background.blue", String.valueOf(model.getBlue()));
+		prop.setProperty("size.width", String.valueOf(model.getWidth()));
+		prop.setProperty("size.height", String.valueOf(model.getHeight()));
+		prop.setProperty("location.x", String.valueOf(model.getLocationX()));
+		prop.setProperty("location.y", String.valueOf(model.getLocationY()));
+		
+		prop.store(new FileWriter(fConfig), null);
 	}
 
 	public static void main(String[] args) {
