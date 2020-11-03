@@ -12,8 +12,8 @@ public class App extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		controller = new Controller();
 		
-		Scene scene = new Scene(controller.getView(), 642, 512);
-		primaryStage.setTitle("Enviar email");
+		Scene scene = new Scene(controller.getView(), 320, 200);
+		primaryStage.setTitle("Ventana con memoria");
 		primaryStage.setScene(scene);		
 		primaryStage.show();
 
