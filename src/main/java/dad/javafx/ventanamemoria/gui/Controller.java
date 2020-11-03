@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 	
@@ -28,6 +29,8 @@ public class Controller implements Initializable {
 	@FXML
 	private Slider sBlue;
 	
+	private Stage stage;
+	
 	// model
 	private Model model = new Model();
 	
@@ -35,8 +38,8 @@ public class Controller implements Initializable {
 		model.setRed(Integer.valueOf((String) prop.get("background.red")));
 		model.setGreen(Integer.valueOf((String) prop.get("background.green")));
 		model.setBlue(Integer.valueOf((String) prop.get("background.blue")));
-		model.setWidth(Integer.valueOf((String) prop.get("size.width")));
-		model.setHeight(Integer.valueOf((String) prop.get("size.height")));
+		model.setWidth(Double.valueOf((String) prop.get("size.width")));
+		model.setHeight(Double.valueOf((String) prop.get("size.height")));
 		model.setLocationX(Integer.valueOf((String) prop.get("location.x")));
 		model.setLocationY(Integer.valueOf((String) prop.get("location.y")));
 		
@@ -57,9 +60,20 @@ public class Controller implements Initializable {
 		
 		view.setStyle("-fx-background-color: rgb(" + model.getRed() + "," + model.getGreen() + "," + model.getBlue() + ");");
 	}
-	
-	public void onSlideValueChange(Observable e) {
+		
+	private void onSlideValueChange(Observable e) {
 		view.setStyle("-fx-background-color: rgb(" + model.getRed() + "," + model.getGreen() + "," + model.getBlue() + ");");
+	}
+	
+	public void crearListenersStage(Stage primaryStage) {
+		stage = primaryStage;
+		primaryStage.widthProperty().addListener(e -> onStageSizeChange(e));
+		primaryStage.heightProperty().addListener(e -> onStageSizeChange(e));
+	}
+	
+	private void onStageSizeChange(Observable e) {
+		model.setWidth(stage.getWidth());
+		model.setHeight(stage.getHeight());
 	}
 	
 	public GridPane getView() {
@@ -76,6 +90,6 @@ public class Controller implements Initializable {
 
 	public void setModel(Model model) {
 		this.model = model;
-	}
+	}	
 
 }

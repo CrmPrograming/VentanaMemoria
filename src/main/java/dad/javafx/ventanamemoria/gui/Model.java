@@ -1,14 +1,16 @@
 package dad.javafx.ventanamemoria.gui;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class Model {
 	private IntegerProperty red = new SimpleIntegerProperty();
 	private IntegerProperty green = new SimpleIntegerProperty();
 	private IntegerProperty blue = new SimpleIntegerProperty();
-	private IntegerProperty width = new SimpleIntegerProperty();
-	private IntegerProperty height = new SimpleIntegerProperty();
+	private DoubleProperty width = new SimpleDoubleProperty();
+	private DoubleProperty height = new SimpleDoubleProperty();
 	private IntegerProperty locationX = new SimpleIntegerProperty();
 	private IntegerProperty locationY = new SimpleIntegerProperty();
 	
@@ -48,58 +50,63 @@ public class Model {
 	public final void setBlue(final int blue) {
 		this.blueProperty().set(blue);
 	}
-	
-	public final IntegerProperty widthProperty() {
+
+	public final DoubleProperty widthProperty() {
 		return this.width;
 	}
 	
-	public final int getWidth() {
+
+	public final double getWidth() {
 		return this.widthProperty().get();
 	}
 	
-	public final void setWidth(final int width) {
+
+	public final void setWidth(final double width) {
 		this.widthProperty().set(width);
 	}
 	
-	public final IntegerProperty heightProperty() {
+
+	public final DoubleProperty heightProperty() {
 		return this.height;
 	}
 	
-	public final int getHeight() {
+
+	public final double getHeight() {
 		return this.heightProperty().get();
 	}
 	
-	public final void setHeight(final int height) {
+
+	public final void setHeight(final double height) {
 		this.heightProperty().set(height);
 	}
-	
+
 	public final IntegerProperty locationXProperty() {
 		return this.locationX;
 	}
 	
+
 	public final int getLocationX() {
 		return this.locationXProperty().get();
 	}
 	
+
 	public final void setLocationX(final int locationX) {
 		this.locationXProperty().set(locationX);
 	}
 	
+
 	public final IntegerProperty locationYProperty() {
 		return this.locationY;
 	}
 	
+
 	public final int getLocationY() {
 		return this.locationYProperty().get();
 	}
 	
+
 	public final void setLocationY(final int locationY) {
 		this.locationYProperty().set(locationY);
 	}
-
-	@Override
-	public String toString() {
-		return "Model [red=" + red + ", green=" + green + ", blue=" + blue + ", width=" + width + ", height=" + height
-				+ ", locationX=" + locationX + ", locationY=" + locationY + "]";
-	}
+	
 }

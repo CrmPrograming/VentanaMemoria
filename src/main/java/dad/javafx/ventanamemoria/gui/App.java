@@ -49,10 +49,12 @@ public class App extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Scene scene = new Scene(controller.getView(), 320, 200);
+		Scene scene = new Scene(controller.getView(), controller.getModel().getWidth(), controller.getModel().getHeight());
 		primaryStage.setTitle("Ventana con memoria");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		controller.crearListenersStage(primaryStage);
 	}
 	
 	@Override
