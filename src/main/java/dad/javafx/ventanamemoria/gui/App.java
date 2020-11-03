@@ -52,6 +52,8 @@ public class App extends Application {
 		Scene scene = new Scene(controller.getView(), controller.getModel().getWidth(), controller.getModel().getHeight());
 		primaryStage.setTitle("Ventana con memoria");
 		primaryStage.setScene(scene);
+		primaryStage.setX(controller.getModel().getLocationX());
+		primaryStage.setY(controller.getModel().getLocationY());
 		primaryStage.show();
 		
 		controller.crearListenersStage(primaryStage);

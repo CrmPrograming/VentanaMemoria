@@ -11,8 +11,8 @@ public class Model {
 	private IntegerProperty blue = new SimpleIntegerProperty();
 	private DoubleProperty width = new SimpleDoubleProperty();
 	private DoubleProperty height = new SimpleDoubleProperty();
-	private IntegerProperty locationX = new SimpleIntegerProperty();
-	private IntegerProperty locationY = new SimpleIntegerProperty();
+	private DoubleProperty locationX = new SimpleDoubleProperty();
+	private DoubleProperty locationY = new SimpleDoubleProperty();
 	
 	
 	public final IntegerProperty redProperty() {
@@ -80,32 +80,32 @@ public class Model {
 		this.heightProperty().set(height);
 	}
 
-	public final IntegerProperty locationXProperty() {
+	public final DoubleProperty locationXProperty() {
 		return this.locationX;
 	}
 	
 
-	public final int getLocationX() {
+	public final double getLocationX() {
 		return this.locationXProperty().get();
 	}
 	
 
-	public final void setLocationX(final int locationX) {
+	public final void setLocationX(final double locationX) {
 		this.locationXProperty().set(locationX);
 	}
 	
 
-	public final IntegerProperty locationYProperty() {
+	public final DoubleProperty locationYProperty() {
 		return this.locationY;
 	}
 	
 
-	public final int getLocationY() {
+	public final double getLocationY() {
 		return this.locationYProperty().get();
 	}
 	
 
-	public final void setLocationY(final int locationY) {
+	public final void setLocationY(final double locationY) {
 		this.locationYProperty().set(locationY);
 	}
 	

@@ -40,8 +40,8 @@ public class Controller implements Initializable {
 		model.setBlue(Integer.valueOf((String) prop.get("background.blue")));
 		model.setWidth(Double.valueOf((String) prop.get("size.width")));
 		model.setHeight(Double.valueOf((String) prop.get("size.height")));
-		model.setLocationX(Integer.valueOf((String) prop.get("location.x")));
-		model.setLocationY(Integer.valueOf((String) prop.get("location.y")));
+		model.setLocationX(Double.valueOf((String) prop.get("location.x")));
+		model.setLocationY(Double.valueOf((String) prop.get("location.y")));
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
 		loader.setController(this);
@@ -67,13 +67,22 @@ public class Controller implements Initializable {
 	
 	public void crearListenersStage(Stage primaryStage) {
 		stage = primaryStage;
-		primaryStage.widthProperty().addListener(e -> onStageSizeChange(e));
-		primaryStage.heightProperty().addListener(e -> onStageSizeChange(e));
+		
+		stage.widthProperty().addListener(e -> onStageSizeChange(e));
+		stage.heightProperty().addListener(e -> onStageSizeChange(e));
+		
+		stage.xProperty().addListener(e -> onStagePositionChange(e));
+		stage.yProperty().addListener(e -> onStagePositionChange(e));
 	}
-	
+
 	private void onStageSizeChange(Observable e) {
 		model.setWidth(stage.getWidth());
 		model.setHeight(stage.getHeight());
+	}
+	
+	private void onStagePositionChange(Observable e) {
+		model.setLocationX(stage.getX());
+		model.setLocationY(stage.getY());
 	}
 	
 	public GridPane getView() {
