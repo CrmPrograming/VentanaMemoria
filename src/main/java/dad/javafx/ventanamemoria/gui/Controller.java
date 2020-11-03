@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,8 +47,19 @@ public class Controller implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		Bindings.bindBidirectional(sRed.valueProperty(), model.redProperty());
+		Bindings.bindBidirectional(sGreen.valueProperty(), model.greenProperty());
+		Bindings.bindBidirectional(sBlue.valueProperty(), model.blueProperty());
 		
+		sRed.valueProperty().addListener(e -> onSlideValueChange(e));
+		sGreen.valueProperty().addListener(e -> onSlideValueChange(e));
+		sBlue.valueProperty().addListener(e -> onSlideValueChange(e));
+		
+		view.setStyle("-fx-background-color: rgb(" + model.getRed() + "," + model.getGreen() + "," + model.getBlue() + ");");
+	}
+	
+	public void onSlideValueChange(Observable e) {
+		view.setStyle("-fx-background-color: rgb(" + model.getRed() + "," + model.getGreen() + "," + model.getBlue() + ");");
 	}
 	
 	public GridPane getView() {
